@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sempera Enterprise</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #2c5e1a 0%, #4a8c2a 100%);
+            color: white;
+            padding: 20px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo h1 {
+            font-size: 32px;
+            font-weight: bold;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+        }
+        
+        .logo span {
+            color: #ffcc00;
+        }
+        
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://zazaastore.ng/wp-content/uploads/2025/09/IMG-20250909-WA0005-1.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 100px 20px;
+        }
+        
+        .hero h2 {
+            font-size: 42px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .hero p {
+            font-size: 20px;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: #ffcc00;
+            color: #2c5e1a;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        
+        .btn:hover {
+            background: #ffd633;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .about {
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .about h2 {
+            font-size: 36px;
+            margin-bottom: 30px;
+            color: #2c5e1a;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .about h2:after {
+            content: '';
+            position: absolute;
+            width: 60%;
+            height: 3px;
+            background: #ffcc00;
+            bottom: -10px;
+            left: 20%;
+        }
+        
+        .about p {
+            max-width: 800px;
+            margin: 0 auto 30px;
+            font-size: 18px;
+        }
+        
+        .products {
+            background-color: #f2f2f2;
+            padding: 80px 0;
+        }
+        
+        .products h2 {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 40px;
+            color: #2c5e1a;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .products h2:after {
+            content: '';
+            position: absolute;
+            width: 60%;
+            height: 3px;
+            background: #ffcc00;
+            bottom: -10px;
+            left: 20%;
+        }
+        
+        .product-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        
+        .product-item {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .product-item:hover {
+            transform: translateY(-10px);
+        }
+        
+        .product-image {
+            height: 220px;
+            overflow: hidden;
+        }
+        
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .product-item:hover .product-image img {
+            transform: scale(1.1);
+        }
+        
+        .product-info {
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .product-info h3 {
+            color: #2c5e1a;
+            margin-bottom: 10px;
+        }
+        
+        .pricing {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .pricing h2 {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 40px;
+            color: #2c5e1a;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .pricing h2:after {
+            content: '';
+            position: absolute;
+            width: 60%;
+            height: 3px;
+            background: #ffcc00;
+            bottom: -10px;
+            left: 20%;
+        }
+        
+        .price-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0 auto;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .price-table th, .price-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .price-table th {
+            background-color: #2c5e1a;
+            color: white;
+            font-weight: 600;
+        }
+        
+        .price-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        .price-table tr:hover {
+            background-color: #f2f2f2;
+        }
+        
+        .price-table td:last-child {
+            font-weight: bold;
+            color: #2c5e1a;
+        }
+        
+        .contact {
+            padding: 80px 0;
+        }
+        
+        .contact h2 {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 40px;
+            color: #2c5e1a;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .contact h2:after {
+            content: '';
+            position: absolute;
+            width: 60%;
+            height: 3px;
+            background: #ffcc00;
+            bottom: -10px;
+            left: 20%;
+        }
+        
+        .contact-info {
+            background-color: white;
+            border-radius: 10px;
+            padding: 40px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .contact-details {
+            margin-bottom: 30px;
+        }
+        
+        .contact-details p {
+            margin-bottom: 15px;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .contact-details i {
+            color: #2c5e1a;
+            margin-right: 15px;
+            font-size: 20px;
+            width: 30px;
+        }
+        
+        .financial-info {
+            border-top: 2px dashed #eee;
+            padding-top: 30px;
+        }
+        
+        .financial-info h3 {
+            margin-bottom: 20px;
+            color: #2c5e1a;
+            text-align: center;
+        }
+        
+        footer {
+            background: linear-gradient(135deg, #2c5e1a 0%, #4a8c2a 100%);
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 40px;
+        }
+        
+        footer p {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 18px;
+            line-height: 1.8;
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .logo {
+                margin-bottom: 15px;
+            }
+            
+            .hero h2 {
+                font-size: 32px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+            
+            .contact-info {
+                padding: 20px;
+            }
+            
+            .product-gallery {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+            
+            .price-table {
+                font-size: 14px;
+            }
+            
+            .price-table th, .price-table td {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <h1>Sempera <span>Enterprise</span></h1>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <section class="hero">
+        <div class="container">
+            <h2>High-Quality Processed Food Products</h2>
+            <p>Delivering nutritious and affordable food through modern technology and sustainable practices</p>
+            <a href="#contact" class="btn">Contact Us</a>
+        </div>
+    </section>
+    
+    <section class="about">
+        <div class="container">
+            <h2>About Us</h2>
+            <p>Sempera Enterprise is a food processing company focused on delivering high-quality, nutritious, and affordable processed food products. The company aims to leverage modern technology, sustainable practices, and strong distribution networks to serve both local and regional markets.</p>
+        </div>
+    </section>
+    
+    <section class="products">
+        <div class="container">
+            <h2>Our Products</h2>
+            <div class="product-gallery">
+                <div class="product-item">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Fresh Salad">
+                    </div>
+                    <div class="product-info">
+                        <h3>Findi</h3>
+                    </div>
+                </div>
+                <div class="product-item">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Pasta">
+                    </div>
+                    <div class="product-info">
+                        <h3>Cherreh</h3>
+                    </div>
+                </div>
+                <div class="product-item">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Healthy Food">
+                    </div>
+                    <div class="product-info">
+                        <h3>Chakri</h3>
+                    </div>
+                </div>
+                <div class="product-item">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1563379926898-05f4575a45d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Organic Food">
+                    </div>
+                    <div class="product-info">
+                        <h3>Lemon ginger powder</h3>
+                    </div>
+                </div>
+                <div class="product-item">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1565299585323-38d6b0865b47?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Delicious Pizza">
+                    </div>
+                    <div class="product-info">
+                        <h3>Hibiscus tea (Wonjo)</h3>
+                    </div>
+                </div>
+                <div class="product-item">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Burger">
+                    </div>
+                    <div class="product-info">
+                        <h3>Moringa powder</h3>
+                    </div>
+                </div>
+                <div class="product-item">
+                    <div class="product-image">
+                        <img src="https://zazaastore.ng/wp-content/uploads/2025/09/IMG-20250822-WA0033.jpg" alt="Tomato Sauce">
+                    </div>
+                    <div class="product-info">
+                        <h3>Lemon ginger tea</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="pricing">
+        <div class="container">
+            <h2>Retail Prices</h2>
+            <table class="price-table">
+                <thead>
+                    <tr>
+                        <th>Product Name</th>
+                        <th>Price (D)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>Lemon ginger tea </td><td>150</td></tr>
+                    <tr><td>Lemon Grass ( Citronella), garlic, and cloves</td><td>150</td></tr>
+                    <tr><td>Hibiscus tea (Wonjo)</td><td>150</td></tr>
+      
+                    <tr><td>Ngerr  lime tea</td><td>150</td></tr>
+                    <tr><td>Mbor Mbor (Lippia Chevalieri) mint tea</td><td>150</td></tr>
+                    <tr><td>Moringa powder</td><td>200</td></tr>
+                   
+                    <tr><td>Lemon Ginger Powder</td><td>150</td></tr>
+                    <tr><td>Findi (Maize)</td><td>400</td></tr>
+                    <tr><td>Porridge (Millet Arraw)</td><td>250</td></tr>
+                    <
+                    <tr><td>Baobab Powder</td><td>350</td></tr>
+                    <tr><td>Cherreh (Millet grains)</td><td>250</td></tr>
+                    <tr><td>Chakri (Millet)</td><td>250</td></tr>
+                    <tr><td>Seasonings</td><td>300</td></tr>
+                    <tr><td>Kinkiliba tea</td><td>150</td></tr>
+                   
+                </tbody>
+            </table>
+        </div>
+    </section>
+    
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Contact Us</h2>
+            <div class="contact-info">
+                <div class="contact-details">
+                    <p><i class="fas fa-user"></i> <strong>Habibatu Tambadou</strong></p>
+                    <p><i class="fas fa-briefcase"></i> CEO, Sempera Enterprise</p>
+                    <p><i class="fab fa-whatsapp"></i> WhatsApp: (+220) 7004537/25474 12</p>
+                    <p><i class="fas fa-envelope"></i> Email: Semperaenterprise@gmail.com</p>
+                    <p><i class="fas fa-envelope"></i> Email: tambadou377@gmail.com</p>
+                    <p><i class="fas fa-envelope"></i> Email: mtambadou200@gmail.com</p>
+                </div>
+                
+                <div class="financial-info">
+                    <h3>Salaam Financial Services</h3>
+                    <p><i class="fas fa-money-bill-wave"></i> 01100302758</p>
+                    <p><i class="fas fa-wave-square"></i> 6077718 Wave</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <p>We are excited to bring our products to the local and international market.</p>
+        </div>
+    </footer>
+
+    <script>
+        // JavaScript to handle image URLs
+        document.addEventListener('DOMContentLoaded', function() {
+            // Array to store product image URLs (to be replaced with actual URLs)
+            const productImageUrls = [
+                'https://zazaastore.ng/wp-content/uploads/2025/09/IMG-20250822-WA0048.jpg',
+                'https://zazaastore.ng/wp-content/uploads/2025/09/IMG-20250822-WA0035.jpg',
+                'https://zazaastore.ng/wp-content/uploads/2025/09/IMG-20250822-WA0036.jpg',
+                'https://zazaastore.ng/wp-content/uploads/2025/09/IMG-20250909-WA0005-1.jpg',
+                'https://zazaastore.ng/wp-content/uploads/2025/09/IMG-20250822-WA0034.jpg',
+                'https://zazaastore.ng/wp-content/uploads/2025/09/IMG-20250822-WA0026-1.jpg',
+                'https://zazaastore.ng/wp-content/uploads/2025/09/IMG-20250822-WA0033.jpg'
+            ];
+            
+            // Get all product image elements
+            const productImages = document.querySelectorAll('.product-image img');
+            
+            // Function to update product images with URLs
+            function updateProductImages(urls) {
+                productImages.forEach((img, index) => {
+                    if (urls[index]) {
+                        img.src = urls[index];
+                        img.alt = 'Product ' + (index + 1);
+                    }
+                });
+            }
+            
+            // Call the function with your image URLs
+            // Replace productImageUrls with your actual image URLs
+            updateProductImages(productImageUrls);
+            
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
